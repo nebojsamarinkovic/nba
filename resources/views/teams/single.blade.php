@@ -29,9 +29,18 @@
                     <a href="/players/{{$player->id}}">{{$player->first_name}} {{$player->last_name}}</a>
                 </li>
             </ul>
-     
             @endforeach
+            
         </div>
-        
+
+        <hr>
+        <h2>Comments</h2>
+        @foreach($comments as $comment)
+        <ul>
+            <li>
+                {{$comment->content}}
+            </li>
+        </ul>
+        @endforeach
     </body>
 </html>

@@ -3,28 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Team;
 
-class TeamsController extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-      $this->middleware('auth');
-    }
-
-
     public function index()
     {
-        
-            $teams= Team::all();
-    
-            return view('welcome', ['teams' => $teams]);
-        
+        //
     }
 
     /**
@@ -34,7 +23,9 @@ class TeamsController extends Controller
      */
     public function create()
     {
-        //
+        $data = $request->validate([
+            'content' => 'required|string|min:10',
+        ]);    
     }
 
     /**
@@ -56,17 +47,7 @@ class TeamsController extends Controller
      */
     public function show($id)
     {
-        $team = Team::findOrFail($id);
-        return view('teams.single', [
-        
-            'name' => $team->name,
-            'email' => $team->email,
-            'adress' => $team->adress,
-            'city' => $team->city,
-            'players' => $team->players,
-            'comments' => $team->comments
-            
-            ]);
+       
     }
 
     /**
