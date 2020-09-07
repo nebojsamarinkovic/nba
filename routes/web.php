@@ -17,9 +17,12 @@ Route::get('/', 'TeamsController@index');
 Route::get('/teams/{id}', 'TeamsController@show');
 Route::get('/players/{id}', 'PlayersController@show');
 
-
+Route::group(['middleware' => 'guest'], function () {
 Route::get('/register', 'AuthController@getRegisterForm')->name('register');
 Route::post('/users', 'AuthController@register');
 
 Route::get('/login', 'AuthController@getLoginForm')->name('login');
 Route::post('/login', 'AuthController@login');
+});
+
+Route::get('/logout', 'AuthController@logout')->name('logout');
