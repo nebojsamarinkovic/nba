@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'TeamsController@index');
 Route::get('/teams/{id}', 'TeamsController@show');
 Route::get('/players/{id}', 'PlayersController@show');
+
+
+Route::get('/register', 'AuthController@getRegisterForm')->name('register');
+Route::post('/users', 'AuthController@register');
+
+Route::get('/login', 'AuthController@getLoginForm')->name('login');
+Route::post('/login', 'AuthController@login');
