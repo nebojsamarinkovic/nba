@@ -15,7 +15,10 @@
         <h1>Teams</h1>
         @foreach($teams as $team)
         <div>
-                <a href="/teams/{{$team->id}}">{{$team->name}}</a>              
+                <a href="/teams/{{$team->id}}"</a>
+                <p>Email: {{$team->email}}</p>
+                <p>Adress: {{$team->adress}}</p>
+                <p>City: {{$team->city</p>
         </div>
        @endforeach
     </body>

@@ -12,11 +12,13 @@
        
     </head>
     <body>
-        <h1>Teams</h1>
-        @foreach($teams as $team)
+        <h1>{{$first_name}} {{$last_name}}</h1>
+        
         <div>
-                <a href="/teams/{{$team->id}}">{{$team->name}}</a>              
+                 <a href="/teams/{{$team->id}}">{{$team->name}}</a>
+                 <p>Email: {{$email}}</p>
+                
         </div>
-       @endforeach
+       
     </body>
 </html>
