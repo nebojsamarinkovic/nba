@@ -25,4 +25,6 @@ Route::get('/login', 'AuthController@getLoginForm')->name('login');
 Route::post('/login', 'AuthController@login');
 });
 
-Route::get('/logout', 'AuthController@logout')->name('logout');
+Route::post('/logout', 'AuthController@logout')->name('logout');
+
+

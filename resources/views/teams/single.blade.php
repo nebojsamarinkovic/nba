@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.main')
+@section('title', '| {{$name}}')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-       
-    </head>
-    <body>
-        
+@section('content')        
         <h1>{{$name}}</h1>
         
         <div>
@@ -38,9 +27,9 @@
         @foreach($comments as $comment)
         <ul>
             <li>
-                {{$comment->content}}
+                <h5>{{$comment->user_id}}</h5>
+                <p>{{$comment->content}}</p>
             </li>
         </ul>
         @endforeach
-    </body>
-</html>
+@endsection

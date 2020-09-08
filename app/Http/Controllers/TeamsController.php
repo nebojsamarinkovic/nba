@@ -23,7 +23,7 @@ class TeamsController extends Controller
         
             $teams= Team::all();
     
-            return view('welcome', ['teams' => $teams]);
+            return view('teams.all', ['teams' => $teams]);
         
     }
 

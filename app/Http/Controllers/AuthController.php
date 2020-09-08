@@ -34,7 +34,7 @@ class AuthController extends Controller
     // auth()->check();
     // auth()->user();
     // auth()->logout();
-    return redirect('/');
+    return redirect('/login');
   }
 
   public function login(Request $request) {
