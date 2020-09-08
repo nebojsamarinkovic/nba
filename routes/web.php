@@ -27,4 +27,6 @@ Route::post('/login', 'AuthController@login');
 
 Route::post('/logout', 'AuthController@logout')->name('logout');
 
+Route::get('/account-verification/{id}', 'AuthController@verifyUser');
+Route::get('/test-verified', function() {return 'jeste verifikovan';})->middleware('verified');
 

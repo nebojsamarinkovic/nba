@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 use App\Http\Requests\RegisterRequest;
 use App\User;
+use App\Mail\AccountConfirmation;
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {
@@ -30,11 +33,14 @@ class AuthController extends Controller
       'password' => Hash::make($data['password']) // bcrypt($data['password'])
     ]);
 
+    Mail::to($user)->send(new AccountConfirmation($user));
     auth()->login($user);
+
+    // auth()->login($user);
     // auth()->check();
     // auth()->user();
     // auth()->logout();
-    return redirect('/login');
+    return redirect('/');
   }
 
   public function login(Request $request) {
@@ -53,4 +59,18 @@ class AuthController extends Controller
     auth()->logout();
     return redirect('/login');
   }
+
+  public function verifyUser($id){
+
+    $user = User::findOrFail($id);
+
+    $user->email_verified_at = new Carbon;
+    $user->save();
+
+    return redirect('/');
+    // $user->update([
+    //   'email_verified_at' => '123142',
+    //   'sadasfa' => '21312414'
+    // ]);
+  } 
 }
