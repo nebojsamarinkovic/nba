@@ -48,6 +48,11 @@ class AuthController extends Controller
       'email' => $request->get('email'),
       'password' => $request->get('password')
     ];
+
+    // User::where('email', $credentials('email'))->first()->emaiil_verified_at == null){
+    //   return view('not-verified');
+    // }
+
     if (auth()->attempt($credentials)) {
       return redirect('/');
     }

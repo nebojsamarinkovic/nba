@@ -58,7 +58,7 @@ class TeamsController extends Controller
     {
         $team = Team::findOrFail($id);
         return view('teams.single', [
-        
+            'id' => $team->id,
             'name' => $team->name,
             'email' => $team->email,
             'adress' => $team->adress,

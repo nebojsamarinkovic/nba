@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateCommentsRequest;
+use App\Team;
 
 class CommentsController extends Controller
 {
@@ -34,9 +36,19 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCommentsRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+
+        $team = Team::findOrFail($id);
+        $team->comments($data['comment']);
+
+        $team->save();
+
+
+        
+        return redirect('/teams/'.$id);
+
     }
 
     /**
